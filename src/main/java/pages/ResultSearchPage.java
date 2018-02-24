@@ -15,15 +15,15 @@ public class ResultSearchPage extends BasePage {
 	@FindBy(xpath = "//div[@class='j-routes route-items-cont']")
 	WebElement listResultSearch;
 
-	@FindBy(xpath = "//*[contains(text(),'Обычные места')]/ancestor::div[@class='route-item__cars-list__item j-car-list-item']//input[@type='radio']")
+	@FindBy(xpath = "//*[contains(text(),'Обычные места')]")
 	WebElement selectCar;
 
-	@FindBy(xpath = "//*[text()='Перейти к вводу данных пассажира и выбору мест']")
+	@FindBy(xpath = "//button[contains(text(),'Перейти к вводу данных пассажира и выбору мест')]")
 	public WebElement goToChooseSeatBtn;
 
 
 	public void selectTrain(String name, String time){
-			WebElement train = listResultSearch.findElement(By.xpath(".//div[@class='route-item'][.//*[contains(text(),'"+name+"')]][.//*[text()='"+time+"']]//button"));
+			WebElement train = listResultSearch.findElement(By.xpath(".//div[@class='route-item'][.//*[@title='"+name+"']][.//*[text()='"+time+"']]//div[@data-descr='car-type']"));
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", train);
 			train.click();
 	}
