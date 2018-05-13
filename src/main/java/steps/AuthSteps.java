@@ -1,8 +1,9 @@
 package steps;
 
+import io.qameta.allure.Step;
 import pages.AuthPage;
 import pages.SearchTicketPage;
-import ru.yandex.qatools.allure.annotations.Step;
+
 
 /**
  * Created by Maria on 27.10.2017.

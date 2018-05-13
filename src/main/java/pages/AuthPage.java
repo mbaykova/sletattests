@@ -19,4 +19,6 @@ public class AuthPage extends BasePage{
 
 	@FindBy(xpath = "//a[text()='Вход'][@class='orng']")
 	public WebElement enter;
+
+
 }

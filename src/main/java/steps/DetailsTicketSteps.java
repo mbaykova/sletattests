@@ -2,7 +2,7 @@ package steps;
 
 import pages.DetailsTicketPage;
 import pages.SearchTicketPage;
-import ru.yandex.qatools.allure.annotations.Step;
+import io.qameta.allure.Step;
 
 /**
  * Created by Maria on 26.10.2017.

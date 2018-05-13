@@ -1,10 +1,11 @@
 package utils;
 
 import gherkin.formatter.model.Result;
+import io.qameta.allure.Attachment;
+import io.qameta.allure.cucumberjvm.AllureCucumberJvm;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-import ru.yandex.qatools.allure.Allure;
-import ru.yandex.qatools.allure.events.MakeAttachmentEvent;
+import steps.BaseSteps;
 
 import static steps.BaseSteps.getDriver;
 
@@ -12,21 +13,19 @@ import static steps.BaseSteps.getDriver;
 /**
  * Created by 777 on 08.05.2017.
  */
-public class AllureReporter extends ru.yandex.qatools.allure.cucumberjvm.AllureReporter {
+public class AllureReporter extends AllureCucumberJvm {
 
 
     @Override
     public void result(Result result) {
-        if ("failed".equals(result.getStatus())) takeScreenshot(result);
+        if ("failed".equals(result.getStatus())) takeScreenshot();
         super.result(result);
     }
 
 
 
-    public void takeScreenshot(Result step) {
-        if (getDriver() != null) {
-            Allure.LIFECYCLE.fire(new MakeAttachmentEvent(((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES),
-                    "Скриншот в момент ошибки", "image/png"));
-        }
+    @Attachment(type = "image/png", value = "Screenshot")
+    public static byte[] takeScreenshot() {
+        return ((TakesScreenshot) BaseSteps.getDriver()).getScreenshotAs(OutputType.BYTES);
     }
 }

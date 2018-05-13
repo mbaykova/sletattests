@@ -2,7 +2,7 @@ package steps;
 
 import org.junit.Assert;
 import pages.ReservePage;
-import ru.yandex.qatools.allure.annotations.Step;
+import io.qameta.allure.Step;
 
 import static org.junit.Assert.assertEquals;
 import static steps.BaseSteps.getVariable;

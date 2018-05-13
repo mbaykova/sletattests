@@ -5,7 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.SearchTicketPage;
-import ru.yandex.qatools.allure.annotations.Step;
+import io.qameta.allure.Step;
 
 import static steps.BaseSteps.driver;
 
@@ -15,14 +15,14 @@ import static steps.BaseSteps.driver;
 public class SearchTicketSteps {
 
 
-	@Step("поле {0} заполняется значением {1}")
-	public void fillField(String field, String value){
-		new SearchTicketPage().fillField(field, value);
-	}
+			@Step("поле {0} заполняется значением {1}")
+			public void fillField(String field, String value){
+				new SearchTicketPage().fillField(field, value);
+			}
 
-	@Step("выолнено нажати на кнопку - Найти")
-	public void clickSerch(){
-		Wait<WebDriver> wait = new WebDriverWait(driver, 15);
-		wait.until(ExpectedConditions.elementToBeClickable(new SearchTicketPage().searchButton)).click();
-	}
+			@Step("выолнено нажати на кнопку - Найти")
+			public void clickSerch(){
+				Wait<WebDriver> wait = new WebDriverWait(driver, 15);
+				wait.until(ExpectedConditions.elementToBeClickable(new SearchTicketPage().searchButton)).click();
+			}
 }
